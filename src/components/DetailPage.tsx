@@ -38,10 +38,10 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
             Kembali
           </Button>
 
-          <Button variant="ghost" className="gap-2 text-white hover:bg-white/10 border border-white/20 rounded-xl">
+          {/* <Button variant="ghost" className="gap-2 text-white hover:bg-white/10 border border-white/20 rounded-xl">
             <Share2 className="size-5" />
             Bagikan
-          </Button>
+          </Button> */}
         </div>
       </motion.header>
 

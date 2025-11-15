@@ -22,7 +22,6 @@ export function Footer() {
             <p className="text-white/60">Menghubungkan UMKM dengan konsumen</p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-white mb-4">Tautan</h4>
             <ul className="space-y-2">
@@ -36,7 +35,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div>
             <h4 className="text-white mb-4">Ikuti Kami</h4>
             <div className="flex gap-3">
@@ -53,7 +51,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="pt-8 border-t border-white/10">
           <p className="text-center text-white/60 flex items-center justify-center gap-2 flex-wrap">
             © 2025 KudaLumpingDigital • Dibuat dengan

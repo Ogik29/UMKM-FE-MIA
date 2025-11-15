@@ -57,7 +57,7 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <div className="flex flex-wrap gap-3 mb-4">
                 <Badge className="bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 px-4 py-2 rounded-xl">✓ Terverifikasi</Badge>
-                <Badge className="bg-white/10 backdrop-blur-md text-white border-white/30 px-4 py-2 rounded-xl">UMKM Lokal</Badge>
+                <Badge className="bg-white/10 backdrop-blur-md text-white border-white/30 px-4 py-2 rounded-xl">{umkm.filter}</Badge>
               </div>
               <h1 className="text-white mb-4 max-w-3xl">{umkm.name}</h1>
               <div className="flex flex-wrap items-center gap-6 text-white/80">
@@ -90,31 +90,33 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
             </motion.div>
 
             {/* Gallery Section */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
-              <h2 className="text-white mb-6 flex items-center gap-3">
-                Galeri & Produk
-                <div className="h-px flex-1 bg-gradient-to-r from-purple-500 to-transparent" />
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {umkm.gallery.map((image, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
-                    className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer"
-                  >
-                    <ImageWithFallback src={image} alt={`${umkm.name} - Foto ${index + 1}`} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="absolute bottom-4 left-4">
-                        <span className="text-white">Foto {index + 1}</span>
+            {umkm.gallery.length > 0 && (
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+                <h2 className="text-white mb-6 flex items-center gap-3">
+                  Galeri & Produk
+                  <div className="h-px flex-1 bg-gradient-to-r from-purple-500 to-transparent" />
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {umkm.gallery.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
+                      className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer"
+                    >
+                      <ImageWithFallback src={image} alt={`${umkm.name} - Foto ${index + 1}`} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute bottom-4 left-4">
+                          <span className="text-white">Foto {index + 1}</span>
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
 
           {/* Right Column - Sticky Sidebar */}
@@ -128,20 +130,34 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
                     <div className="p-2 bg-white/10 rounded-lg">
                       <MapPin className="size-5 text-blue-400" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <div className="text-white/60 mb-1">Alamat</div>
-                      <div className="text-white">{umkm.address}</div>
+                      <div className="text-white break-words">{umkm.address}</div>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 bg-white/10 rounded-lg">
-                      <Phone className="size-5 text-purple-400" />
+                  {umkm.socialMedia && (
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 bg-white/10 rounded-lg flex-shrink-0">
+                        <Phone className="size-5 text-purple-400" />
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="text-white/60 mb-1">Contact</div>
+
+                        <div className="bg-white/5 rounded-lg p-3 max-w-full overflow-hidden">
+                          <a
+                            href={umkm.socialMedia}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-blue-400 transition-colors break-all word-break-break-all text-sm truncate block w-full"
+                            title={umkm.socialMedia}
+                          >
+                            {umkm.socialMedia}
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Telepon</div>
-                      <div className="text-white">+62 812-3456-7890</div>
-                    </div>
-                  </div>
+                  )}
                 </div>
                 <Button className="w-full mt-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 rounded-xl hover:shadow-lg hover:shadow-blue-500/50 transition-all">Hubungi Sekarang</Button>
               </div>

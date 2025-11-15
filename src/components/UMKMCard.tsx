@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import type { UMKM } from "../data/umkmData";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight, Star } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 
 interface UMKMCardProps {
   umkm: UMKM;
@@ -29,14 +29,14 @@ export function UMKMCard({ umkm, onDetailClick, index, className = "" }: UMKMCar
         <div className="relative h-full flex flex-col justify-between p-6">
           {/* Top Badge */}
           <div className="flex items-start justify-between">
-            <div className="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30">
-              <span className="text-white">UMKM</span>
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-1.5 rounded-full border border-transparent">
+              <span className="text-white">{umkm.filter}</span>
             </div>
 
             {isFeatured && (
               <div className="flex items-center gap-1 bg-yellow-500/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-yellow-500/30">
-                <Star className="size-4 text-yellow-400 fill-yellow-400" />
-                <span className="text-yellow-200">Featured</span>
+                {/* <Star className="size-4 text-yellow-400 fill-yellow-400" /> */}
+                {/* <span className="text-yellow-200">Featured</span> */}
               </div>
             )}
           </div>

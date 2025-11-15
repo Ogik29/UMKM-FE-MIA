@@ -16,22 +16,17 @@ export function Footer() {
                 </div>
               </div>
               <div>
-                <div className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  InfoUMKM.id
-                </div>
-                <p className="text-white/50">Platform Terpercaya</p>
+                <div className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Kuda Lumping Digital</div>
               </div>
             </div>
-            <p className="text-white/60">
-              Menghubungkan UMKM dengan pelanggan di seluruh Indonesia.
-            </p>
+            <p className="text-white/60">Menghubungkan UMKM dengan konsumen</p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white mb-4">Tautan Cepat</h4>
+            <h4 className="text-white mb-4">Tautan</h4>
             <ul className="space-y-2">
-              {["Tentang Kami", "Kontak", "Syarat & Ketentuan", "Kebijakan Privasi"].map((link) => (
+              {["Tentang Kami", "Kontak", "Kebijakan Privasi"].map((link) => (
                 <li key={link}>
                   <a href="#" className="text-white/60 hover:text-white transition-colors">
                     {link}
@@ -48,15 +43,9 @@ export function Footer() {
               {[
                 { icon: Instagram, color: "from-pink-500 to-purple-500" },
                 { icon: Twitter, color: "from-blue-400 to-blue-600" },
-                { icon: Facebook, color: "from-blue-500 to-blue-700" }
+                { icon: Facebook, color: "from-blue-500 to-blue-700" },
               ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`p-3 bg-gradient-to-br ${social.color} rounded-xl text-white hover:shadow-lg transition-all`}
-                >
+                <motion.a key={index} href="#" whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.95 }} className={`p-3 bg-gradient-to-br ${social.color} rounded-xl text-white hover:shadow-lg transition-all`}>
                   <social.icon className="size-5" />
                 </motion.a>
               ))}
@@ -67,11 +56,8 @@ export function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10">
           <p className="text-center text-white/60 flex items-center justify-center gap-2 flex-wrap">
-            © 2025 InfoUMKM.id • Dibuat dengan 
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
+            © 2025 KudaLumpingDigital • Dibuat dengan
+            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1, repeat: Infinity }}>
               <Heart className="size-4 text-red-400 fill-red-400 inline" />
             </motion.span>
             untuk UMKM Indonesia

@@ -29,14 +29,14 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
           </a>
 
           {/* Navigation - Desktop */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {["Beranda", "Tentang"].map((item) => (
+          {/* <nav className="hidden lg:flex items-center gap-1">
+            {["Beranda"].map((item) => (
               <a key={item} href={item === "Beranda" ? "/" : `#${item.toLowerCase()}`} className="px-4 py-2 text-white/70 hover:text-white transition-all relative group rounded-xl hover:bg-white/10">
                 {item}
                 <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-1/2 transition-all duration-300" />
               </a>
             ))}
-          </nav>
+          </nav> */}
 
           {/* Search Bar */}
           <div className="relative flex-1 max-w-md hidden md:block">
@@ -60,7 +60,7 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
         {isMenuOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="lg:hidden mt-4 pt-4 border-t border-white/10 space-y-2">
             <div className="mb-4">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-white/40 pointer-events-none" />
+              {/* <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-white/40 pointer-events-none" /> */}
               <Input
                 type="text"
                 placeholder="Cari UMKM..."
@@ -69,11 +69,6 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 className="pl-12 bg-white/10 backdrop-blur-md border-white/20 text-white placeholder:text-white/40 rounded-xl"
               />
             </div>
-            {["Beranda", "Tentang"].map((item) => (
-              <a key={item} href={item === "Beranda" ? "/" : `#${item.toLowerCase()}`} className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-all">
-                {item}
-              </a>
-            ))}
           </motion.div>
         )}
       </div>

@@ -5,7 +5,7 @@ import type { UMKM } from "../data/umkmData";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Badge } from "./ui/badge";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 interface DetailPageProps {
   umkm: UMKM;
@@ -22,9 +22,12 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   return (
     <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-blue-950 relative overflow-hidden">
-      {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
@@ -37,15 +40,9 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
             <ArrowLeft className="size-5 group-hover:-translate-x-1 transition-transform" />
             Kembali
           </Button>
-
-          {/* <Button variant="ghost" className="gap-2 text-white hover:bg-white/10 border border-white/20 rounded-xl">
-            <Share2 className="size-5" />
-            Bagikan
-          </Button> */}
         </div>
       </motion.header>
 
-      {/* Hero Section with Parallax */}
       <section className="relative h-[60vh] overflow-hidden">
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <ImageWithFallback src={umkm.image} alt={umkm.name} className="w-full h-full object-cover" />
@@ -56,7 +53,7 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
           <div className="max-w-7xl mx-auto px-6 pb-12 w-full">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <div className="flex flex-wrap gap-3 mb-4">
-                <Badge className="bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 px-4 py-2 rounded-xl">✓ Terverifikasi</Badge>
+                <Badge className="bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 px-4 py-2 rounded-xl">✓ Approved</Badge>
                 <Badge className="bg-white/10 backdrop-blur-md text-white border-white/30 px-4 py-2 rounded-xl">{umkm.filter}</Badge>
               </div>
               <h1 className="text-white mb-4 max-w-3xl">{umkm.name}</h1>
@@ -102,7 +99,7 @@ export function DetailPage({ umkm, onBack }: DetailPageProps) {
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
                       whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
                       className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer"
                     >
